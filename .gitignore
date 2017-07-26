@@ -1,0 +1,17 @@
+#################################
+# Unreal Engine Generated Files #
+#################################
+*Build/
+*Binaries/
+*Intermediate/
+*Saved/
+*/Content/StarterContent/
+
+
+
+
+#################################
+# Visual Studio Generated Files #
+#################################
+*.VC.db
+*.vs/
