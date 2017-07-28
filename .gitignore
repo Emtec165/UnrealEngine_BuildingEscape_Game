@@ -5,8 +5,9 @@
 *Binaries/
 *Intermediate/
 *Saved/
-*/Content/StarterContent/
-
+*/Content/StarterContent/Textures
+*/Content/StarterContent/HDRI
+BuildingEscape/Content/StarterContent/Maps/StarterMap_BuiltData.uasset
 
 
 
@@ -15,3 +16,4 @@
 #################################
 *.VC.db
 *.vs/
+

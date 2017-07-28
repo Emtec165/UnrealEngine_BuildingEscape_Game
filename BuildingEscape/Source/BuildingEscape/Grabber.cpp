@@ -33,6 +33,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	FVector LineTraceEnd = PlayerLocation + PlayerRotation.Vector() * Reach;
 
+	// RAY CASTING AKA LINE TRACING
 	DrawDebugLine(GetWorld(),
 		PlayerLocation,
 		LineTraceEnd,

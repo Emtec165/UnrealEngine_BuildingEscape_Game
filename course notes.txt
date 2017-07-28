@@ -75,3 +75,6 @@ Blueprint:
 While previewing game click Eject, select object and click Blueprints -> Convert Selected Actor to Blueprint Class
 In Content Browser double click on newly created blueprint and select Open Full Blurprint Editor
 Blueprint can obtain custom components written by programmer.
+
+Collision filtering:
+https://www.unrealengine.com/en-US/blog/collision-filtering
