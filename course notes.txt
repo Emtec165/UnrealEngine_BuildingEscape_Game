@@ -1,0 +1,65 @@
+Use [n] to access a string, starting at n=0.
+In Visual Studio F6
+In Visual Studio select variable and CTRL + R twice to smartly rename it's name. Refactoring!!
+In Visual Studio CLTR + H to find and replace.
+In Visual Studio in class header file mark/select method prototype and CTRL + . to quickly create method definiton.
+In Visual Studio select variables method and F12 to go to the method definition.
+In Visual Studio from time to time click "Build" tab and select "Rebuild Solution" or "Rebuild project_name" to get rid of nasty lazy compiling issues!!
+Key word "const" among others features also prevents the fucntion from modifying any member variables example -> GetCurrentTry() const; This works only on class functions.
+Select "View" tab and click "Task List" to show all comments which starts with "TODO". Use TODO mark in comments when the code should be modified and delete TODO comment. Ommit TODO sign in comment when new code will be added without deleting comment.
+
+
+
+
+
+
+
+To lower viewport quality: https://www.youtube.com/watch?v=NJ1OYXcxfBk&list=PLXWXR2pLy_hWiHbH65HeqO2HZ_hQGFx5B&feature=share&index=2
+To lower "play" qualisty: Settings -> Engine Scalability Settings and Settings -> Material Quality Level
+
+FString variable type is mutable. You can change it and manipulate.
+FText variable type is immutable. It's often used to display some message to the user.
+
+In Visual Studio use "int32" instead of "int" and "FText"/"FString" instead of "std::string". To do so place "using int32 = int;"/"using FString = std::string;" just after all includes.
+or you can use #define like so "#define TMap std::map".
+
+For-each loop in C++:
+for (char letter : Word) { }
+OR
+for (auto letter : Word) { }
+
+Key-word "auto" lets compiler decide what type certain variable should be.
+
+Folders & files that can be ommitted in VCS (Version Control System):
+-Binaries (folder)
+-Build (folder)
+-Intermediate (folder)
+-Saved (folder)
+-project_name.VC.db (file)
+
+If you deleted Visual Studio files then opening the .sln file will yeld erros. To fix that click right on Unreal Engine project file and choose "Generate Visual Studio project files".
+
+AActor* SomeActor;
+(*SomeActor).GetName(); //THE SAME
+SomeActor->GetName(); //THE SAME "->" accesor operator
+
+Loging something to the UE console:
+UE_LOG(LogTemp, Warning, TEXT("Position reporter report for duty!"));
+
+To get IntelliSense hints:
+#include "Gameframework/Actor.h"
+#include "Engine/TriggerVolume.h"
+#include "Engine/World.h"
+#include "Components/ActorComponent.h"
+
+Snapping object to the floor (END key)
+
+ALT + drag to duiplicate an object
+Hold L + double-click for temporary work Light
+
+This is a UE predefinied macro which acts as a "cut-and-paste". This happens before code compilation.
+UPROPERTY(VisibleAnywhere)  <- It DON'T end with ";". InteliSense will not show any completion for it so u need to goole for posible parameters.
+https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Properties/
+
+GetOwner() <- gets the parent object
+GetWorld() <-gets whole world form which we can get to the wanted object
