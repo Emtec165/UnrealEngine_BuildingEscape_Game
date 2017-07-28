@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Grabber.h"
+#include "Gameframework/Actor.h"
 
 
 // Sets default values for this component's properties
@@ -33,7 +34,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	FVector LineTraceEnd = PlayerLocation + PlayerRotation.Vector() * Reach;
 
-	// RAY CASTING AKA LINE TRACING
+	///Draw a red trace (line)
 	DrawDebugLine(GetWorld(),
 		PlayerLocation,
 		LineTraceEnd,
@@ -42,5 +43,22 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 		0.f,
 		0.f,
 		10.f);
+
+	///Setup query parameters
+	TraceParams = FCollisionQueryParams(FName(TEXT("")), false, GetOwner());
+
+	///Line tracing AKA Ray-casting
+	GetWorld()->LineTraceSingleByObjectType(
+		Hit,
+		PlayerLocation,
+		LineTraceEnd,
+		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
+		TraceParams
+	);
+
+	AActor* CollidingObject = Hit.GetActor();
+	if (CollidingObject) {
+		UE_LOG(LogTemp, Warning, TEXT("Player hits %s"), *CollidingObject->GetName());
+	}
 }
 

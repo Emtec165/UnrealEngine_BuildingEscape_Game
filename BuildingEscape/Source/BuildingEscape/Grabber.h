@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "DrawDebugHelpers.h"
+#include "CollisionQueryParams.h"
 #include "Components/ActorComponent.h"
 #include "Grabber.generated.h"
 
@@ -29,5 +30,7 @@ private:
 	FVector PlayerLocation;
 	FRotator PlayerRotation;
 	float Reach = 100.f;
+	FHitResult Hit;
+	FCollisionQueryParams TraceParams;
 	
 };
