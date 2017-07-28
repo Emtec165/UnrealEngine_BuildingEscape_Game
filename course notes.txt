@@ -1,4 +1,5 @@
 Use [n] to access a string, starting at n=0.
+CTRL + K then C to commend selected chunk of code.
 In Visual Studio F6
 In Visual Studio select variable and CTRL + R twice to smartly rename it's name. Refactoring!!
 In Visual Studio CLTR + H to find and replace.
@@ -14,6 +15,8 @@ Select "View" tab and click "Task List" to show all comments which starts with "
 
 
 (F11) to maximize preview window ("play" button).
+(SHIFT + F1) to show mouse cursor while in preview ("play") mode
+(F8) to eject while preview ("play") mode
 To lower viewport quality: https://www.youtube.com/watch?v=NJ1OYXcxfBk&list=PLXWXR2pLy_hWiHbH65HeqO2HZ_hQGFx5B&feature=share&index=2
 To lower "play" qualisty: Settings -> Engine Scalability Settings and Settings -> Material Quality Level
 
@@ -67,3 +70,8 @@ GetWorld() <-gets whole world form which we can get to the wanted object
 Collision Volumes:
 (CTRL + E) In viewport right-click on object and select edit.
 Collision tab -> add something accurate.
+
+Blueprint:
+While previewing game click Eject, select object and click Blueprints -> Convert Selected Actor to Blueprint Class
+In Content Browser double click on newly created blueprint and select Open Full Blurprint Editor
+Blueprint can obtain custom components written by programmer.
