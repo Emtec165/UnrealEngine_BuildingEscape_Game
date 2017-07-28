@@ -3,8 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/ActorComponent.h"
 #include "Engine/TriggerVolume.h"
+#include "Engine/World.h"
+#include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
 
 
@@ -21,6 +22,8 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+	void OpenCloseDoor(float);
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
@@ -31,4 +34,6 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PresurePlate;
+
+	AActor* ActorThatOpens;	//Pawn inherits for Actor
 };
