@@ -13,7 +13,7 @@ Select "View" tab and click "Task List" to show all comments which starts with "
 
 
 
-
+(F11) to maximize preview window ("play" button).
 To lower viewport quality: https://www.youtube.com/watch?v=NJ1OYXcxfBk&list=PLXWXR2pLy_hWiHbH65HeqO2HZ_hQGFx5B&feature=share&index=2
 To lower "play" qualisty: Settings -> Engine Scalability Settings and Settings -> Material Quality Level
 
@@ -63,3 +63,7 @@ https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Referenc
 
 GetOwner() <- gets the parent object
 GetWorld() <-gets whole world form which we can get to the wanted object
+
+Collision Volumes:
+(CTRL + E) In viewport right-click on object and select edit.
+Collision tab -> add something accurate.
