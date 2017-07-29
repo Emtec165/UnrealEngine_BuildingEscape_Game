@@ -20,9 +20,6 @@ Steps to reset your project
 
 
 
-
-
-
 (F11) to maximize preview window ("play" button).
 (SHIFT + F1) to show mouse cursor while in preview ("play") mode
 (F8) to eject while preview ("play") mode
@@ -60,9 +57,9 @@ UE_LOG(LogTemp, Warning, TEXT("Position reporter report for duty!"));
 
 To get IntelliSense hints:
 #include "Gameframework/Actor.h"
-#include "Engine/TriggerVolume.h"
 #include "Engine/World.h"
-#include "Components/ActorComponent.h"
+
+https://docs.unrealengine.com/latest/INT/Programming/UnrealBuildSystem/IWYUReferenceGuide/index.html
 
 Snapping object to the floor (END key)
 
@@ -94,3 +91,6 @@ GetWorld()->LineTraceSingle MAY BE DEPRECATED
 
 Reference in c++:
 https://pl.wikibooks.org/wiki/C%2B%2B/Referencje
+
+To get component of some object:
+GetOwner()->FindComponentByClass<Component_class_name>();

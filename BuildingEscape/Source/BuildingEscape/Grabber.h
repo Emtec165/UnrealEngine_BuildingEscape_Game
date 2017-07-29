@@ -6,6 +6,7 @@
 #include "DrawDebugHelpers.h"
 #include "CollisionQueryParams.h"
 #include "Components/ActorComponent.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Grabber.generated.h"
 
 
@@ -33,4 +34,5 @@ private:
 	FHitResult Hit;
 	FCollisionQueryParams TraceParams;
 	
+	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 };
