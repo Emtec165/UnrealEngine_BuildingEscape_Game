@@ -6,6 +6,7 @@
 #include "DrawDebugHelpers.h"
 #include "CollisionQueryParams.h"
 #include "Components/ActorComponent.h"
+#include "Components/InputComponent.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Grabber.generated.h"
 
@@ -35,4 +36,12 @@ private:
 	FCollisionQueryParams TraceParams;
 	
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+	UInputComponent* InputComponent = nullptr;
+
+
+	//	Ray-cast and grab what's in reach
+	void Grab();
+
+	//	Call when grab is realesed
+	void Release();
 };

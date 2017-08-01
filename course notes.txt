@@ -94,3 +94,8 @@ https://pl.wikibooks.org/wiki/C%2B%2B/Referencje
 
 To get component of some object:
 GetOwner()->FindComponentByClass<Component_class_name>();
+
+Setup user input:
+Settings -> Project Settings -> Input
+(Action Mappings are key-bindings)
+(Axis Mappings are analog-mappings)
