@@ -29,11 +29,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	FVector PlayerLocation;
-	FRotator PlayerRotation;
 	float Reach = 100.f;
-	FHitResult Hit;
-	FCollisionQueryParams TraceParams;
 	
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
@@ -44,4 +40,13 @@ private:
 
 	//	Call when grab is realesed
 	void Release();
+
+	//	Find attached physics handle
+	void FindPhysicsHandleComponent();
+
+	//	Setup attached intput component
+	void SetupIntputComponent();
+
+	// Return hit for 1st physics body in reach
+	FHitResult GetFirstPhysicsBodyInReach() const;
 };
