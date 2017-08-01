@@ -78,20 +78,12 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 	//	if the physics handle is attached
 	if (PhysicsHandle->GrabbedComponent){
 		// move the object that player is holding
-		PhysicsHandle->SetTargetLocation(LineTraceEnd);
+		PhysicsHandle->SetTargetLocation(GetReachLineEnd());
 	}
 }
 
 FHitResult UGrabber::GetFirstPhysicsBodyInReach() {
 
-	///	Calculate line trace end
-	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerLocation, OUT PlayerRotation);
-	LineTraceEnd = PlayerLocation + PlayerRotation.Vector() * Reach;
-
-	///Report Player view point
-	//UE_LOG(LogTemp, Warning, TEXT("Player position: %s, Rotation: %s."), *PlayerLocation.ToString(), *PlayerRotation.ToString());
-
-	
 	///Setup query parameters
 	FCollisionQueryParams TraceParams = FCollisionQueryParams(FName(TEXT("")), false, GetOwner());
 	FHitResult HitResult;
@@ -99,8 +91,8 @@ FHitResult UGrabber::GetFirstPhysicsBodyInReach() {
 	///Line tracing AKA Ray-casting
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT HitResult,
-		PlayerLocation,
-		LineTraceEnd,
+		GetReachLineStart(),
+		GetReachLineEnd(),
 		FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),
 		TraceParams
 	);
@@ -114,14 +106,36 @@ FHitResult UGrabber::GetFirstPhysicsBodyInReach() {
 }
 
 ///	Draw a red trace (line from player to end of his reach)
-void UGrabber::DrawDebbugLine() const {
+void UGrabber::DrawDebbugLine() {
 	DrawDebugLine(GetWorld(),
-	PlayerLocation,
-	LineTraceEnd,
-	FColor(255, 0, 0),
-	false,	//do line presist (be in multiple frames)
-	0.f,
-	0.f,
-	10.f);
+		GetReachLineStart(),
+		GetReachLineEnd(),
+		FColor(255, 0, 0),
+		false,	//do line presist (be in multiple frames)
+		0.f,
+		0.f,
+		10.f
+	);
+}
+
+FVector UGrabber::GetReachLineStart() {
+	FVector PlayerLocation;
+	FRotator PlayerRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerLocation, OUT PlayerRotation);
+	return PlayerLocation;
+}
+
+FVector UGrabber::GetReachLineEnd() {
+	FVector PlayerLocation;
+	FRotator PlayerRotation;
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+		OUT PlayerLocation,
+		OUT PlayerRotation
+		);
+
+	///Report Player view point
+	//UE_LOG(LogTemp, Warning, TEXT("Player position: %s, Rotation: %s."), *PlayerLocation.ToString(), *PlayerRotation.ToString());
+
+	return PlayerLocation + PlayerRotation.Vector() * Reach;
 }
 

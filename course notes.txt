@@ -101,3 +101,5 @@ Settings -> Project Settings -> Input
 (Axis Mappings are analog-mappings)
 
 If you want to find usage of some method just use VS find function (CTRL + F) in "entire solution".
+
+If player behaves like a ball (makes small jumps over and over) select foor -> right click -> "edit" -> delete colission and add new one. Compile and save changes.

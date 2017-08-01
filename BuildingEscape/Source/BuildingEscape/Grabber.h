@@ -35,9 +35,7 @@ private:
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
 
-	FVector PlayerLocation;
-	FRotator PlayerRotation;
-	FVector LineTraceEnd; //Ray-cast end
+	//FVector LineTraceEnd; //Ray-cast end
 
 
 	//	Ray-cast and grab what's in reach
@@ -56,5 +54,11 @@ private:
 	FHitResult GetFirstPhysicsBodyInReach();
 
 	//	Draw a red trace (line from player to end of his reach)
-	void DrawDebbugLine() const;
+	void DrawDebbugLine();
+
+	// Returns current start of reach line
+	FVector GetReachLineStart();
+
+	// Returns current end of reach line
+	FVector GetReachLineEnd();
 };
