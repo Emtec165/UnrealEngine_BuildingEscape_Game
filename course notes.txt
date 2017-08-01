@@ -99,3 +99,5 @@ Setup user input:
 Settings -> Project Settings -> Input
 (Action Mappings are key-bindings)
 (Axis Mappings are analog-mappings)
+
+If you want to find usage of some method just use VS find function (CTRL + F) in "entire solution".

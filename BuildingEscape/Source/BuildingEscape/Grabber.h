@@ -7,6 +7,7 @@
 #include "CollisionQueryParams.h"
 #include "Components/ActorComponent.h"
 #include "Components/InputComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Grabber.generated.h"
 
