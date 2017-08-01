@@ -30,10 +30,14 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	float Reach = 100.f;
+	const float Reach = 100.f;
 	
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
+
+	FVector PlayerLocation;
+	FRotator PlayerRotation;
+	FVector LineTraceEnd; //Ray-cast end
 
 
 	//	Ray-cast and grab what's in reach
@@ -49,5 +53,8 @@ private:
 	void SetupIntputComponent();
 
 	// Return hit for 1st physics body in reach
-	FHitResult GetFirstPhysicsBodyInReach() const;
+	FHitResult GetFirstPhysicsBodyInReach();
+
+	//	Draw a red trace (line from player to end of his reach)
+	void DrawDebbugLine() const;
 };
