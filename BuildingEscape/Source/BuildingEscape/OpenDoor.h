@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/PrimitiveComponent.h"
 #include "Engine/TriggerVolume.h"
 #include "Engine/World.h"
 #include "Components/ActorComponent.h"
@@ -39,10 +40,13 @@ private:
 	ATriggerVolume* PresurePlate;
 
 	UPROPERTY(EditAnywhere)
+	float MassRequiredToOpenDoors = 50.f;
+
+	UPROPERTY(EditAnywhere)
 	float DoorCloseDelay = 5.f;
 
 	float LastDoorOpenTime;
 	AActor* Owner;
 
-	AActor* ActorThatOpens;	//Pawn inherits for Actor
+	float GetTotalMassOfActorsOnPlate();
 };
