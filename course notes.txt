@@ -26,6 +26,11 @@ Steps to reset your project
 To lower viewport quality: https://www.youtube.com/watch?v=NJ1OYXcxfBk&list=PLXWXR2pLy_hWiHbH65HeqO2HZ_hQGFx5B&feature=share&index=2
 To lower "play" qualisty: Settings -> Engine Scalability Settings and Settings -> Material Quality Level
 
+How to make safe usage of pointers:
+Initialize them in .h file with nullptr
+In .cpp before every usage of pointer chceck if it's nullptr.
+Smart trick is to use e.g. "if (!PhysicsHandle) { return; }" before Physics Handle interaction.
+
 FString variable type is mutable. You can change it and manipulate.
 FText variable type is immutable. It's often used to display some message to the user.
 
@@ -103,3 +108,6 @@ Settings -> Project Settings -> Input
 If you want to find usage of some method just use VS find function (CTRL + F) in "entire solution".
 
 If player behaves like a ball (makes small jumps over and over) select foor -> right click -> "edit" -> delete colission and add new one. Compile and save changes.
+
+When you add e.g. wall to the scene and changed it size applied texture may look junky. To fix that:
+Duplicate currently applied texture, change wall texture to newly created copy, edit it, click on "TexCord" (found in main window) and edit UVTiling.
