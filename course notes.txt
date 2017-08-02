@@ -111,3 +111,8 @@ If player behaves like a ball (makes small jumps over and over) select foor -> r
 
 When you add e.g. wall to the scene and changed it size applied texture may look junky. To fix that:
 Duplicate currently applied texture, change wall texture to newly created copy, edit it, click on "TexCord" (found in main window) and edit UVTiling.
+
+How to raise action from C++ code to the BluePrint:
+https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/Reference/Properties/Specifiers/BlueprintAssignable/
+And broadcast action like so: "OnOpenRequest.Broadcast();"
+In BluePrint editor get that action and... react.

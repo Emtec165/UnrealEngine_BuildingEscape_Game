@@ -26,24 +26,16 @@ void UOpenDoor::BeginPlay()
 	if (!PresurePlate) { UE_LOG(LogTemp, Error, TEXT("ATriggerVolume is not attached to the %s!"), *GetOwner()->GetName()); }
 }
 
-void UOpenDoor::OpenCloseDoor(float DoorAngle) {
-	FRotator NewRotation = FRotator(0.0f, DoorAngle, 0.0f);
-	Owner->SetActorRotation(NewRotation);
-}
-
-
 // Called every frame
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	if (GetTotalMassOfActorsOnPlate() > MassRequiredToOpenDoors) {
-		OpenCloseDoor(OpenAngle);
-		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+		OnOpenRequest.Broadcast();
 	}
-	
-	if (LastDoorOpenTime < GetWorld()->GetTimeSeconds() - DoorCloseDelay) {
-		OpenCloseDoor(CloseAngle);
+	else {
+		OnCloseRequest.Broadcast();
 	}
 }
 
