@@ -30,7 +30,10 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	const float Reach = 100.f;
+	const float Reach = 200.f;
+
+	UPROPERTY(EditAnywhere)
+	float RotationSpeed = 10.f;
 	
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* InputComponent = nullptr;
@@ -43,6 +46,11 @@ private:
 
 	//	Call when grab is realesed
 	void Release();
+
+	//	Rotate gabbed object
+	void RotateX();
+	void RotateY();
+	void RotateZ();
 
 	//	Find attached physics handle
 	void FindPhysicsHandleComponent();

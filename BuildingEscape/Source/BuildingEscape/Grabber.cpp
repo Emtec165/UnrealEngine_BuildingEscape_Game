@@ -38,6 +38,10 @@ void UGrabber::SetupIntputComponent() {
 		UE_LOG(LogTemp, Warning, TEXT("%s found UInputComponent"), *GetOwner()->GetName())
 		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
 		InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
+
+		InputComponent->BindAction("RotateX", IE_Repeat, this, &UGrabber::RotateX);
+		InputComponent->BindAction("RotateY", IE_Repeat, this, &UGrabber::RotateY);
+		InputComponent->BindAction("RotateZ", IE_Repeat, this, &UGrabber::RotateZ);
 	}
 	else {
 		UE_LOG(LogTemp, Error, TEXT("%s don't have UInputComponent"), *GetOwner()->GetName())
@@ -70,6 +74,51 @@ void UGrabber::Release() {
 	UE_LOG(LogTemp, Warning, TEXT("Grab released"))
 	if (!PhysicsHandle) { return; }
 	PhysicsHandle->ReleaseComponent();
+}
+
+void UGrabber::RotateX() {
+	UE_LOG(LogTemp, Warning, TEXT("RotateX pressed"))
+
+	FRotator TargetRotation;
+	FRotator RotationChange = FRotator(0.f, 0.f, RotationSpeed);
+	FRotator NewTargetRotation;
+	FVector TargetLocation;	// we won't use it. method demands it..
+	if (!PhysicsHandle) { return; }
+	PhysicsHandle->GetTargetLocationAndRotation(OUT TargetLocation, OUT TargetRotation);
+	NewTargetRotation = TargetRotation + RotationChange;
+	PhysicsHandle->SetTargetRotation(NewTargetRotation);
+
+	UE_LOG(LogTemp, Warning, TEXT("Actor rotation %s"), *NewTargetRotation.ToString())
+}
+
+void UGrabber::RotateY() {
+	UE_LOG(LogTemp, Warning, TEXT("RotateY pressed"))
+
+	FRotator TargetRotation;
+	FRotator RotationChange = FRotator(RotationSpeed, 0.f, 0.f);
+	FRotator NewTargetRotation;
+	FVector TargetLocation;	// we won't use it. method demands it..
+	if (!PhysicsHandle) { return; }
+	PhysicsHandle->GetTargetLocationAndRotation(OUT TargetLocation, OUT TargetRotation);
+	NewTargetRotation = TargetRotation + RotationChange;
+	PhysicsHandle->SetTargetRotation(NewTargetRotation);
+
+	UE_LOG(LogTemp, Warning, TEXT("Actor rotation %s"), *NewTargetRotation.ToString())
+}
+
+void UGrabber::RotateZ() {
+	UE_LOG(LogTemp, Warning, TEXT("RotateZ pressed"))
+
+	FRotator TargetRotation;
+	FRotator RotationChange = FRotator(0.f, RotationSpeed, 0.f);
+	FRotator NewTargetRotation;
+	FVector TargetLocation;	// we won't use it. method demands it..
+	if (!PhysicsHandle) { return; }
+	PhysicsHandle->GetTargetLocationAndRotation(OUT TargetLocation, OUT TargetRotation);
+	NewTargetRotation = TargetRotation + RotationChange;
+	PhysicsHandle->SetTargetRotation(NewTargetRotation);
+
+	UE_LOG(LogTemp, Warning, TEXT("Actor rotation %s"), *NewTargetRotation.ToString())
 }
 
 // Called every frame
